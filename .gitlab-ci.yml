@@ -1,12 +1,16 @@
-default:
-  image: node:18-buster
+image: node:17-alpine3.14
 
-before_script:
-    - npm install
-    - npm install -g netlify-cli --unsafe-perm=true
-    - npm run build
+variables:
+  NETLIFY_SITE_ID: $NETLIFY_SITE_ID
+  NETLIFY_AUTH_TOKEN: $NETLIFY_AUTH_TOKEN
 
-deploy-job:
+stages:
+  - deploy
+
+deploy:
   stage: deploy
   script:
-    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir public/ --prod
+    - npm install
+    - npm install netlify-cli --save-dev
+    - npm run build
+    - npx netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir public/ --prod
