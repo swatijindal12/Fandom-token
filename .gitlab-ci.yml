@@ -2,7 +2,7 @@ stages:
   - build
   - deploy
 
-build-project:
+build:
   stage: build
   image: node:18
   script:
