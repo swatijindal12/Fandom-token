@@ -11,7 +11,7 @@ const Modal = ({ setIsModalOpen, heading, description, isButtonEnabled }) => {
           <div className="modalHeader">
             <h3 className="heading">{heading}</h3>
           </div>
-          <button className="closeBtn" onClick={() => setIsModalOpen(false)}>
+          <button className="closeBtn" data-testid="close-btn" onClick={() => setIsModalOpen(false)}>
             X
           </button>
           <hr />
@@ -35,7 +35,7 @@ const Modal = ({ setIsModalOpen, heading, description, isButtonEnabled }) => {
             <div className="actionsContainer">
               {
                 isButtonEnabled ?
-                  <button className="deleteBtn" onClick={() => setIsModalOpen(false)}>
+                  <button className="deleteBtn" data-testid="action-btn" onClick={() => setIsModalOpen(false)}>
                     <b>OK</b>
                   </button> :
                   <></>

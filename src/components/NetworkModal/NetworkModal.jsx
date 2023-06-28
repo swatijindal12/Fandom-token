@@ -43,13 +43,16 @@ const NetworkModal = ({ setIsNetworkModalOpen, data, setModalHeading,
 
     return (
         <>
-            <div className="network-darkBG" onClick={() => setIsNetworkModalOpen(false)} />
+            <div className="network-darkBG" data-testid="ntwrk-close"
+                onClick={() => setIsNetworkModalOpen(false)} />
             <div className="network-centered">
                 <div className="network-modal">
                     <div className="network-modalHeader">
                         <h3 className="network-heading">Please select a network</h3>
                     </div>
-                    <button className="network-closeBtn" onClick={() => setIsNetworkModalOpen(false)}>
+                    <button className="network-closeBtn"
+                        data-testid="cross-close"
+                        onClick={() => setIsNetworkModalOpen(false)}>
                         X
                     </button>
                     <hr />
@@ -59,6 +62,7 @@ const NetworkModal = ({ setIsNetworkModalOpen, data, setModalHeading,
                             data.length > 0 && data.map((item) => {
                                 return (
                                     <div className="network-name"
+                                        data-testid={`select-ntwrk-${item.id}`}
                                         key={item.id}
                                         onClick={() => chooseNetwork(item)}>
                                         {item.name}

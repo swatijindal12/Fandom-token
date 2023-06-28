@@ -264,6 +264,7 @@ export default function PriceModal(props) {
                             className="form-control price-input"
                             placeholder="Enter sell price in matic"
                             name="price"
+                            data-testid="price"
                             value={price}
                             onChange={handleChange}
                         />
@@ -271,6 +272,7 @@ export default function PriceModal(props) {
                     <div className="flex justify-center">
                         <div className="pr-4">
                             <button
+                                data-testid="price-confirm"
                                 className="bg-green-600 hover:bg-green-800 text-white  py-2 px-4 rounded price-button"
                                 onClick={handleConfirm}
                             >
@@ -279,6 +281,7 @@ export default function PriceModal(props) {
                         </div>
                         <div className="pl-4">
                             <button
+                                data-testid="price-cancel"
                                 className="bg-red-600 hover:bg-red-800 text-white  py-2 px-4 rounded price-button"
                                 onClick={handleCancel}
                             >

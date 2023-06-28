@@ -94,6 +94,7 @@ function Home() {
           <Button variant="gradient" size="sm" fullWidth
             className="connect-wallet-btn md:inline
             mb-2 hover:text-black focus:text-black active:text-black"
+            data-testid="connect-wal-btn"
             onClick={selectNetwork}
           >
             {
