@@ -330,14 +330,14 @@ function Mint() {
         <div className="form-create-item">
           <div className="row">
             <div className="col-sm-12">
-              <h1 className="text-left sc-heading main-heading">Create NFT</h1>
-              <p className="text-left sc-heading">
+              <h1 data-testid="create-nft" className="text-left sc-heading main-heading">Create NFT</h1>
+              <p data-testid="create-details" className="text-left sc-heading">
                 Most popular nft market place for celebrities
               </p>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form data-testid="form" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 form-background">
               <div>
                 <label className="uploadFile cursor-pointer">
@@ -364,6 +364,7 @@ function Mint() {
                   type="text"
                   className="item-1"
                   name="name"
+                  data-testid="create-nft-name"
                   value={nftInfo.name}
                   placeholder="NFT Name"
                   onChange={handleChange}
@@ -373,6 +374,7 @@ function Mint() {
 
             <textarea
               className="form-control col-12 row-3 input-group text"
+              data-testid="create-nft-description"
               placeholder="NFT Description"
               name="description"
               value={nftInfo.description}
@@ -391,6 +393,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-quantity"
                     name="quantity"
                     value={nftInfo.quantity}
                     placeholder="1"
@@ -400,6 +403,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-max-quan"
                     name="max_quantity"
                     value={100}
                     disabled={true}
@@ -415,6 +419,7 @@ function Mint() {
                     type="number"
                     className="form-control nft-input-rating"
                     name="rarity"
+                    data-testid="create-nft-rarity"
                     value={nftInfo.rarity}
                     placeholder="1"
                     onChange={handleChange}
@@ -423,6 +428,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-max-rarity"
                     name="max_rarity"
                     value={10}
                     disabled={true}
@@ -442,6 +448,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-style"
                     name="style"
                     value={nftInfo.style}
                     placeholder="1"
@@ -450,6 +457,7 @@ function Mint() {
                   <label htmlFor="" className="text-[19px]"> of </label>
                   <input
                     type="number"
+                    data-testid="create-nft-max-style"
                     className="form-control nft-input-rating"
                     name="max_style"
                     value={10}
@@ -465,6 +473,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-beauty"
                     name="beauty"
                     value={nftInfo.beauty}
                     placeholder="1"
@@ -473,6 +482,7 @@ function Mint() {
                   <label htmlFor="" className="text-[19px]"> of </label>
                   <input
                     type="number"
+                    data-testid="create-nft-max-beauty"
                     className="form-control nft-input-rating"
                     name="max_beauty"
                     value={10}
@@ -492,6 +502,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-comedy"
                     name="comedy"
                     value={nftInfo.comedy}
                     placeholder="1"
@@ -500,6 +511,7 @@ function Mint() {
                   <label htmlFor="" className="text-[19px]"> of </label>
                   <input
                     type="number"
+                    data-testid="create-nft-max-comedy"
                     className="form-control nft-input-rating"
                     name="max_comedy"
                     value={10}
@@ -516,6 +528,7 @@ function Mint() {
                     type="number"
                     className="form-control nft-input-rating"
                     name="action"
+                    data-testid="create-nft-action"
                     value={nftInfo.action}
                     placeholder="1"
                     onChange={handleChange}
@@ -524,6 +537,7 @@ function Mint() {
                   <input
                     type="number"
                     className="form-control nft-input-rating"
+                    data-testid="create-nft-max-action"
                     name="max_action"
                     value={10}
                     disabled={true}
@@ -539,6 +553,7 @@ function Mint() {
                   name="submit"
                   type="submit"
                   id="submit"
+                  data-testid="submit"
                   className="sc-button"
                 >
                   <span>

@@ -17,7 +17,7 @@ export default function Detail(props) {
       {metadata && (
         <div className="overlay hidden" id="popup">
           <div className="popup">
-            <h2 className="text-2xl font-bold mb-4 text-center">
+            <h2 title="details-id" className="text-2xl font-bold mb-4 text-center">
               NFT Metadata Details
             </h2>
             <hr />
@@ -55,6 +55,7 @@ export default function Detail(props) {
             </div>
             <div className="flex justify-end">
               <button
+                data-testid="hand-cls-btn"
                 className="bg-green-600 hover:bg-green-800 text-white  py-2 px-4 rounded button"
                 onClick={handleClose}
               >

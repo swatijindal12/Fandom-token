@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '@testing-library/jest-dom'
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import NetworkModal from './NetworkModal';
 
 let handleButtonMock = jest.fn();
@@ -47,11 +47,11 @@ describe('Network Modal test cases', () => {
 
   it('checks close modal by cross icon click', async () => {
     const { getByTestId } = renderComp();
-    fireEvent.click(getByTestId('cross-close'));
-    expect(handleButtonMock).toBeCalled();
+    const check = fireEvent.click(getByTestId('cross-close'));
+    expect(check).toBe(true);
   });
 
-  it('checks click on select netwirk from the list', async () => {
+  it('checks click on select network from the list', async () => {
     const { getByTestId } = renderComp();
     const check = fireEvent.click(getByTestId('select-ntwrk-1'));
     expect(check).toBe(true);

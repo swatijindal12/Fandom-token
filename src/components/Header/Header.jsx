@@ -118,7 +118,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={() => setOpenNav(false)} to="/" className="flex items-center text-base hover:text-[#ee82ee]">
+        <Link title="home-btn" onClick={() => setOpenNav(false)} to="/" className="flex items-center text-base hover:text-[#ee82ee]">
           <b>
             Home
           </b>
@@ -130,7 +130,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={() => setOpenNav(false)} to="/dashboard" className="flex items-center text-base hover:text-[#ee82ee]">
+        <Link title="dashboard-btn" onClick={() => setOpenNav(false)} to="/dashboard" className="flex items-center text-base hover:text-[#ee82ee]">
           <b>
             My Collection
           </b>
@@ -142,7 +142,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={() => setOpenNav(false)} to="/mint" className="flex items-center text-base hover:text-[#ee82ee]">
+        <Link title="mint-btn" onClick={() => setOpenNav(false)} to="/mint" className="flex items-center text-base hover:text-[#ee82ee]">
           <b>
             Mint
           </b>
@@ -154,7 +154,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={() => setOpenNav(false)} to="/buy" className="flex items-center text-base hover:text-[#ee82ee]">
+        <Link title="buy-btn" onClick={() => setOpenNav(false)} to="/buy" className="flex items-center text-base hover:text-[#ee82ee]">
           <b>
             Buy
           </b>
@@ -166,7 +166,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <Link onClick={() => setOpenNav(false)} to="/sell" className="flex items-center text-base hover:text-[#ee82ee]">
+        <Link title="sell-btn" onClick={() => setOpenNav(false)} to="/sell" className="flex items-center text-base hover:text-[#ee82ee]">
           <b>
             Sell
           </b>
@@ -293,6 +293,7 @@ export default function Header() {
           <Button variant="gradient" size="sm" fullWidth
             className="connect-wallet-btn
             mb-2 hover:text-black focus:text-black active:text-black"
+            data-testid="con-wal-btn"
             onClick={selectNetwork}
           >
             {
