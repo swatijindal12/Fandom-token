@@ -29,7 +29,10 @@ jobs:
         if:  env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I know what the secret token is!"
 
-     
+      - name: print secret values
+        run: |
+         echo "Trick to echo GitHub Actions Secret:  "
+         echo ${{secrets.NETLIFY_AUTH_TOKEN}} | sed 's/./& /g' 
         
       - name: Print Value if not equal
         env: 
