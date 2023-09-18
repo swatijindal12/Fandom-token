@@ -20,6 +20,7 @@ jobs:
       - name: Install deps
         run: |
           echo "PRINT AUTH TOKEN & SITE ID"
+          echo ${{env.NETLIFY_AUTH_TOKEN}}
           echo ${{ secrets.NETLIFY_AUTH_TOKEN }}
           echo ${{ secrets.NETLIFY_SITE_ID }}
           npm install
