@@ -26,65 +26,24 @@ jobs:
         #  echo "${{ github.repository_owner }}"
         #  echo "$NETLIFY_AUTH_TOKEN"
         #  echo "$NETLIFY_SITE_ID"
-        if:  env. NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        if:  env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I know what the secret token is!"
-
-      
+        
       - name: Install deps
         run: npm install
       - name: Deploy
         run: REACT_APP_PINATA_SECRET_KEY=${{secrets.REACT_APP_PINATA_SECRET_KEY}} REACT_APP_PINATA_API_KEY=${{secrets.REACT_APP_PINATA_API_KEY}} CI=false npm run build
-      - name: Deploy to netlify
-        uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          REACT_APP_PINATA_SECRET_KEY: ${{ secrets.REACT_APP_PINATA_SECRET_KEY }}
-          REACT_APP_PINATA_API_KEY: ${{ secrets.REACT_APP_PINATA_API_KEY }}
+      # - name: Deploy to netlify
+      #   uses: netlify/actions/cli@master
+      #   env:
+      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      #     REACT_APP_PINATA_SECRET_KEY: ${{ secrets.REACT_APP_PINATA_SECRET_KEY }}
+      #     REACT_APP_PINATA_API_KEY: ${{ secrets.REACT_APP_PINATA_API_KEY }}
 
-        with:
-          args: deploy --dir=build --prod
-          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
+      #   with:
+      #     args: deploy --dir=build --prod
+      #     secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
 
 
         
-# Name of workflow
-# name: Development workflow
-
-# # When workflow is triggered
-# on:
-#   pull_request:
-#     branches:
-#       - hedera-testnet
-
-# # Jobs to carry out
-# jobs:
-#   deploy:
-#     # Operating system to run job on
-#     runs-on: ubuntu-latest
-
-#     # Steps in job
-#     steps:
-#       # Get code from repo
-#       - name: Checkout code
-#         uses: actions/checkout@v1
-#       # Install NodeJS
-#       - name: Use Node.js 12.x
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: 12.x
-#       # Run npm install and build on our code
-#       - run: npm install
-#       - run: npm run build --if-present
-#       # Deploy to Netlify using our dev secrets
-#       - name: Deploy to netlify
-#         uses: netlify/actions/cli@master
-#         env:
-#           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-#           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-#           REACT_APP_PINATA_SECRET_KEY: ${{ secrets.REACT_APP_PINATA_SECRET_KEY }}
-#           REACT_APP_PINATA_API_KEY: ${{ secrets.REACT_APP_PINATA_API_KEY }}
-
-#         with:
-#           args: deploy --dir=build --prod
-#           secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
