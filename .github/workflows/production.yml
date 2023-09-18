@@ -16,22 +16,18 @@ jobs:
           node-version: 18
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
-      - name: Link netlify
-        run: netlify link
-      - name: Run build
-        run: CI=false netlify build
+      
+      - name: Install deps
+        run: |
+          echo "PRINT AUTH TOKEN & SITE ID"
+          echo "NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}"
+          echo "NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}"
+          npm install
+      - name: Deploy
+        run: REACT_APP_PINATA_SECRET_KEY=${{secrets.REACT_APP_PINATA_SECRET_KEY}} REACT_APP_PINATA_API_KEY=${{secrets.REACT_APP_PINATA_API_KEY}} CI=false npm run build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-      - name: Deploy to Netlify
-        run:  netlify deploy
-      # - name: Install deps
-      #   run: npm install
-      # - name: Deploy
-      #   run: REACT_APP_PINATA_SECRET_KEY=${{secrets.REACT_APP_PINATA_SECRET_KEY}} REACT_APP_PINATA_API_KEY=${{secrets.REACT_APP_PINATA_API_KEY}} CI=false npm run build
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           # REACT_APP_PINATA_SECRET_KEY: ${{ secrets.REACT_APP_PINATA_SECRET_KEY }}
           # REACT_APP_PINATA_API_KEY: ${{ secrets.REACT_APP_PINATA_API_KEY }}
 # Name of workflow
