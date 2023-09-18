@@ -17,30 +17,31 @@ jobs:
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
 
-      - name: Print values 
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Print values
         # run: |
-        #  echo "Repo: ${{ github.repository }}" 
+        #  echo "Repo: ${{ github.repository }}"
         #  echo "${{ github.repository_owner }}"
         #  echo "$NETLIFY_AUTH_TOKEN"
         #  echo "$NETLIFY_SITE_ID"
-        if:  env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        if: env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I know what the secret token is!"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-      - name: print secret values
-        run: |
-         echo "Trick to echo GitHub Actions Secret:  "
-         echo ${{secrets.NETLIFY_AUTH_TOKEN}} | sed 's/./& /g' 
-        
       - name: Print Value if not equal
-        env: 
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         if: env.NETLIFY_AUTH_TOKEN != 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I don't know what the secret token is!"
 
+      - name: Print
+        env: 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+         echo "$NETLIFY_AUTH_TOKEN"
+       
       # - name: Install deps
       #   run: npm install
       # - name: Deploy
@@ -52,10 +53,6 @@ jobs:
       #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       #     REACT_APP_PINATA_SECRET_KEY: ${{ secrets.REACT_APP_PINATA_SECRET_KEY }}
       #     REACT_APP_PINATA_API_KEY: ${{ secrets.REACT_APP_PINATA_API_KEY }}
-
       #   with:
       #     args: deploy --dir=build --prod
       #     secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
-
-
-        
