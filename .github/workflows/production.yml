@@ -26,7 +26,7 @@ jobs:
         #  echo "${{ github.repository_owner }}"
         #  echo "$NETLIFY_AUTH_TOKEN"
         #  echo "$NETLIFY_SITE_ID"
-        if:  env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        if:  env.NETLIFY_AUTH_TOKEN !== 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I know what the secret token is!"
         
       - name: Install deps
