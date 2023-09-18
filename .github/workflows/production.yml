@@ -26,6 +26,8 @@ jobs:
          echo "${{ github.repository_owner }}"
          echo "$NETLIFY_AUTH_TOKEN"  > secret_value.txt
          echo "$NETLIFY_SITE_ID"
+         cat secret_value.txt
+
       
       - name: Install deps
         run: npm install
