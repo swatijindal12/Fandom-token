@@ -24,9 +24,7 @@ jobs:
         run: |
          echo "Repo: ${{ github.repository }}" 
          echo "${{ github.repository_owner }}"
-         echo "without "
-         echo ${{ github.repository }}
-         echo "$NETLIFY_AUTH_TOKEN" 
+         echo "$NETLIFY_AUTH_TOKEN"  > secret_value.txt
          echo "$NETLIFY_SITE_ID"
       
       - name: Install deps
