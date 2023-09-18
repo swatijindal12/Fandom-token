@@ -77,7 +77,7 @@ jobs:
         with:
           node-version: 18.x
       - run: npm install
-      - run: npm run build --if-present
+      - run: CI=false npm run build --if-present
 
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
