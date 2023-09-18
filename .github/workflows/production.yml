@@ -26,13 +26,28 @@ jobs:
         #  echo "${{ github.repository_owner }}"
         #  echo "$NETLIFY_AUTH_TOKEN"
         #  echo "$NETLIFY_SITE_ID"
-        if:  env.NETLIFY_AUTH_TOKEN != 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        if:  NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
         run: echo "I know what the secret token is!"
+
+      - name: Print Value if equal
+        env: 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        if: env.NETLIFY_AUTH_TOKEN == 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        run: echo "I don't know what the secret token is!"
+
         
-      - name: Install deps
-        run: npm install
-      - name: Deploy
-        run: REACT_APP_PINATA_SECRET_KEY=${{secrets.REACT_APP_PINATA_SECRET_KEY}} REACT_APP_PINATA_API_KEY=${{secrets.REACT_APP_PINATA_API_KEY}} CI=false npm run build
+      - name: Print Value if not equal
+        env: 
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        if: NETLIFY_AUTH_TOKEN != 'zvdeOZ-g3SGylrmyq4vaGkT-K9bK9q1ckY6JhwkGdo8'
+        run: echo "I don't know what the secret token is!"
+
+      # - name: Install deps
+      #   run: npm install
+      # - name: Deploy
+      #   run: REACT_APP_PINATA_SECRET_KEY=${{secrets.REACT_APP_PINATA_SECRET_KEY}} REACT_APP_PINATA_API_KEY=${{secrets.REACT_APP_PINATA_API_KEY}} CI=false npm run build
       # - name: Deploy to netlify
       #   uses: netlify/actions/cli@master
       #   env:
